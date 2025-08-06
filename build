@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+: "${HELM_CHART_VERSION:=0.25.0}" # cloudnative-pg 1.26.1
+
+#helm repo add cnpg https://cloudnative-pg.github.io/charts
+#helm repo update
+
+# Pull down and modify templates
+helm template cnpg cnpg/cloudnative-pg \
+	--version "$HELM_CHART_VERSION" \
+	--namespace cnpg \
+	>out.yaml
+
+mkdir -p manifests/base
+mv out.yaml manifests/base/cnpg.yaml

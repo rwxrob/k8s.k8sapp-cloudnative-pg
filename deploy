@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+test -z "$K8SAPP_CLUSTER" && echo "K8SAPP_CLUSTER unset" && exit 1
+
+kubectl apply -k "manifests/$K8SAPP_CLUSTER" \
+	--server-side \
+	--force-conflicts
