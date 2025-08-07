@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+kubectl delete -f "$dir/sample.yaml"
+kubectl delete deployment cluster-example-pgadmin4
+
