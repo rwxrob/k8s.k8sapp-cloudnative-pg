@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 
 test -z "$K8SAPP_CLUSTER" && echo "K8SAPP_CLUSTER unset" && exit 1
-
-#TODO check for full removal of crds
-
 kubectl delete -k "manifests/$K8SAPP_CLUSTER"
