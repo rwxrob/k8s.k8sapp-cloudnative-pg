@@ -3,8 +3,8 @@ set -e
 
 : "${HELM_CHART_VERSION:=0.25.0}" # cloudnative-pg 1.26.1
 
-#helm repo add cnpg https://cloudnative-pg.github.io/charts
-#helm repo update
+helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo update
 
 # Cache current chart defaults for reference and diff during upgrade
 mkdir -p resources/values/cnpg
@@ -18,5 +18,3 @@ helm template cnpg cnpg/cloudnative-pg \
 	--version "$HELM_CHART_VERSION" \
 	--namespace cnpg \
 	>manifests/base/cnpg.yaml
-
-# TODO convert secrets to external secrets
