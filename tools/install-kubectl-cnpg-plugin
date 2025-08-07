@@ -6,8 +6,8 @@ if [[ ! -d ~/.local/bin ]]; then
 	exit 1
 fi
 
-curl -sSfL \
-	https://github.com/cloudnative-pg/cloudnative-pg/raw/main/hack/install-cnpg-plugin.sh | sudo sh -s -- -b ~/.local/bin
+url='https://github.com/cloudnative-pg/cloudnative-pg/raw/main/hack/install-cnpg-plugin.sh'
+curl -sSfL "$url" | sudo sh -s -- -b ~/.local/bin
 
 cat >~/.local/bin/kubectl_complete-cnpg <<EOF
 #!/usr/bin/env sh
